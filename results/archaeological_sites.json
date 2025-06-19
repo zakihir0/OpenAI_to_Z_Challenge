@@ -1,0 +1,35 @@
+[
+  {
+    "latitude": -3.2653,
+    "longitude": -62.015899999999995,
+    "confidence": 1.0,
+    "site_type": "Structure",
+    "description": "Rectangular structure (12228 sq pixels) with aspect ratio 1.83",
+    "evidence_type": [
+      "geometric_pattern",
+      "soil_variation"
+    ]
+  },
+  {
+    "latitude": -3.4653,
+    "longitude": -62.2159,
+    "confidence": 1.0,
+    "site_type": "Structure",
+    "description": "Rectangular structure (12228 sq pixels) with aspect ratio 1.83",
+    "evidence_type": [
+      "geometric_pattern",
+      "soil_variation"
+    ]
+  },
+  {
+    "latitude": -3.3653,
+    "longitude": -62.115899999999996,
+    "confidence": 1.0,
+    "site_type": "Structure",
+    "description": "Rectangular structure (12228 sq pixels) with aspect ratio 1.83",
+    "evidence_type": [
+      "geometric_pattern",
+      "soil_variation"
+    ]
+  }
+]
