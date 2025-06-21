@@ -1,0 +1,75 @@
+{
+  "site_info": {
+    "name": "Casarabe Archaeological Complex (Realistic)",
+    "latitude": -14.7833,
+    "longitude": -64.9167,
+    "region": "Llanos de Mojos, Bolivia",
+    "cultural_period": "500-1400 CE",
+    "site_type": "Complex earthwork settlement"
+  },
+  "data_specifications": {
+    "resolution_meters": 5.0,
+    "grid_size": [
+      800,
+      800
+    ],
+    "area_km2": 16.0,
+    "coordinate_system": "Local grid (meters)",
+    "elevation_datum": "Approximate MSL",
+    "file_format": "NumPy array (.npy) and ASCII (.txt)"
+  },
+  "elevation_statistics": {
+    "min_elevation": 192.56851049318917,
+    "max_elevation": 207.43997837339202,
+    "mean_elevation": 200.02042347026475,
+    "std_elevation": 2.838118169975458
+  },
+  "archaeological_features": {
+    "main_earthwork": {
+      "center_pixel": [
+        400,
+        400
+      ],
+      "outer_radius_m": 300.0,
+      "inner_radius_m": 250.0,
+      "height_m": 2.0,
+      "type": "circular_plaza_complex"
+    },
+    "satellite_sites": {
+      "count": 4,
+      "radius_m": 100.0,
+      "height_m": 1.5,
+      "type": "secondary_plazas"
+    },
+    "causeways": {
+      "pattern": "cruciform",
+      "width_m": 20.0,
+      "height_m": 0.8,
+      "type": "raised_roads"
+    },
+    "forest_islands": {
+      "count": 8,
+      "avg_radius_m": 87.5,
+      "height_m": "1.0-3.0",
+      "type": "anthropogenic_forest"
+    },
+    "field_systems": {
+      "pattern": "rectangular_grid",
+      "spacing_m": 200.0,
+      "height_m": 0.5,
+      "type": "raised_fields"
+    }
+  },
+  "cultural_context": {
+    "culture": "Casarabe",
+    "period": "500-1400 CE",
+    "function": "Complex settlement with ceremonial, residential, and agricultural areas",
+    "significance": "Demonstrates sophisticated pre-Columbian landscape modification"
+  },
+  "generation_info": {
+    "created": "20250621_104816",
+    "method": "Synthetic realistic based on archaeological evidence",
+    "reference": "Prümers et al. 2022, Nature; Lombardo et al. 2013",
+    "accuracy": "High fidelity to known Casarabe site patterns"
+  }
+}

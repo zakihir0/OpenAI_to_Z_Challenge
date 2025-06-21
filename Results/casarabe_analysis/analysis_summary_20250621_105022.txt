@@ -1,0 +1,19 @@
+LIDAR ARCHAEOLOGICAL ANALYSIS SUMMARY
+==================================================
+
+Site Name: Unknown
+Region: Unknown
+Coordinates: [0, 0]
+Pipeline Mode: COMPLETE
+Processing Time: Unknown
+
+COMPLETE MULTIMODAL ANALYSIS RESULTS
+-----------------------------------
+Overall Score: 0.900
+Investigation Priority: IMMEDIATE - High priority archaeological investigation required
+Structures Detected: 2150
+AI Analysis: Available
+Output Files: 12
+
+==================================================
+Analysis completed with LIDAR Archaeological Pipeline

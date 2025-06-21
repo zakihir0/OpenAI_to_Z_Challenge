@@ -1,0 +1,5 @@
+id,structure_type,type,longitude,latitude,confidence,archaeological_type,cultural_context,method,area,height,depth,radius,length,angle,width,aspect_ratio,prominence
+0,earthworks,earthwork,-0.00109375,0.0020703125,0.0,unknown,unknown,traditional,2827.4333882308138,,,,,,,,
+0,linear_features,linear_feature,,,0.0,unknown,unknown,traditional,,,,,,0.7,,,
+0,circular_features,circular_feature,,,0.0,unknown,unknown,traditional,,,,30.0,,,,,
+0,mounds,mound,0.0018359375,-0.0008593749999999999,0.0,unknown,unknown,traditional,1256.6370614359173,3.0,,,,,,,
