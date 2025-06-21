@@ -1,0 +1,89 @@
+{
+  "western_amazon": {
+    "collection_summary": {
+      "region_info": {
+        "bbox": [
+          -74.0,
+          -12.0,
+          -68.0,
+          -6.0
+        ],
+        "name": "Western Amazon (Peru/Ecuador)",
+        "priority": "high"
+      },
+      "bbox": [
+        -74.0,
+        -12.0,
+        -68.0,
+        -6.0
+      ],
+      "collection_date": "2025-06-21T04:50:53.294937",
+      "landsat_scenes": 0,
+      "sentinel_scenes": 0,
+      "landsat_data": [],
+      "sentinel_data": [],
+      "elevation_available": false,
+      "elevation_shape": null
+    },
+    "best_scenes": [],
+    "survey_status": "completed"
+  },
+  "acre_rondonia": {
+    "collection_summary": {
+      "region_info": {
+        "bbox": [
+          -69.0,
+          -12.0,
+          -63.0,
+          -8.0
+        ],
+        "name": "Acre-Rond\u00f4nia Geoglyph Region",
+        "priority": "high"
+      },
+      "bbox": [
+        -69.0,
+        -12.0,
+        -63.0,
+        -8.0
+      ],
+      "collection_date": "2025-06-21T04:50:54.185611",
+      "landsat_scenes": 0,
+      "sentinel_scenes": 0,
+      "landsat_data": [],
+      "sentinel_data": [],
+      "elevation_available": false,
+      "elevation_shape": null
+    },
+    "best_scenes": [],
+    "survey_status": "completed"
+  },
+  "upper_xingu": {
+    "collection_summary": {
+      "region_info": {
+        "bbox": [
+          -55.0,
+          -15.0,
+          -50.0,
+          -10.0
+        ],
+        "name": "Upper Xingu Cultural Area",
+        "priority": "high"
+      },
+      "bbox": [
+        -55.0,
+        -15.0,
+        -50.0,
+        -10.0
+      ],
+      "collection_date": "2025-06-21T04:50:54.897727",
+      "landsat_scenes": 0,
+      "sentinel_scenes": 0,
+      "landsat_data": [],
+      "sentinel_data": [],
+      "elevation_available": false,
+      "elevation_shape": null
+    },
+    "best_scenes": [],
+    "survey_status": "completed"
+  }
+}

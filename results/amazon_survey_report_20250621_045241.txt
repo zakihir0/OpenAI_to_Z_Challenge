@@ -1,0 +1,37 @@
+AMAZON ARCHAEOLOGICAL SURVEY REPORT
+==================================================
+Survey Date: 2025-06-21 04:52:41
+Locations Analyzed: 8
+
+HIGH POTENTIAL DISCOVERIES:
+
+1. Acre Geoglyph Extension Area
+   Coordinates: -10.500, -67.800
+   Potential Score: 0.75 (high)
+   Key Factors: Potential earthworks in deforestation patterns, Circular depressions identified, Linear terrain features, Within archaeological region
+
+2. Llanos de Mojos Border Region
+   Coordinates: -15.200, -64.800
+   Potential Score: 0.85 (high)
+   Key Factors: Potential earthworks in deforestation patterns, Circular depressions identified, Linear terrain features, Near known site: Llanos de Mojos
+
+3. Upper Xingu Expansion Zone
+   Coordinates: -12.500, -52.800
+   Potential Score: 0.70 (medium)
+   Key Factors: Mound features detected, Circular depressions identified, Linear terrain features, Within archaeological region
+
+4. Peru-Brazil Border Region
+   Coordinates: -11.800, -69.500
+   Potential Score: 0.65 (medium)
+   Key Factors: Potential earthworks in deforestation patterns, Circular depressions identified, Linear terrain features
+
+SUMMARY STATISTICS:
+- High potential sites (>0.6): 4
+- Medium potential sites (0.4-0.6): 1
+- AI interpretations generated: 8
+
+RECOMMENDED NEXT STEPS:
+1. High-resolution satellite imagery acquisition for top sites
+2. Ground-penetrating radar surveys for confirmed locations
+3. Collaborative verification with local indigenous communities
+4. Environmental impact assessment before field surveys
