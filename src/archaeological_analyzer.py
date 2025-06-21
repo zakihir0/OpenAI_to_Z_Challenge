@@ -86,33 +86,85 @@ class ArchaeologicalAnalyzer:
         return self._create_synthetic_imagery(site_info)
     
     def _download_real_satellite_image(self, site_info: Dict) -> Optional[np.ndarray]:
-        """Download real satellite imagery"""
+        """Download real satellite imagery from multiple sources"""
         
-        try:
-            lat, lon = site_info['lat'], site_info['lon']
-            x_tile, y_tile = self._deg2tile(lat, lon, 16)
-            
-            url = f'https://mt1.google.com/vt/lyrs=s&x={x_tile}&y={y_tile}&z=16'
-            response = requests.get(url, timeout=15)
-            
-            if response.status_code == 200:
-                import PIL.Image
-                from io import BytesIO
-                
-                img = PIL.Image.open(BytesIO(response.content))
-                img_array = np.array(img.convert('RGB'))
-                
-                # Resize to standard size
-                if img_array.shape[:2] != (512, 512):
-                    img_resized = PIL.Image.fromarray(img_array).resize((512, 512))
-                    img_array = np.array(img_resized)
-                
-                return img_array
-                
-        except Exception as e:
-            logger.debug(f"Failed to download real imagery: {e}")
+        lat, lon = site_info['lat'], site_info['lon']
         
-        return None
+        # Try multiple satellite tile sources
+        tile_sources = [
+            {
+                'name': 'Google Satellite',
+                'url_template': 'https://mt{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+                'subdomains': ['0', '1', '2', '3']
+            },
+            {
+                'name': 'ESRI World Imagery',
+                'url_template': 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                'subdomains': ['']
+            },
+            {
+                'name': 'OpenStreetMap Satellite',
+                'url_template': 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                'subdomains': ['a', 'b', 'c']
+            }
+        ]
+        
+        # Try different zoom levels for better coverage
+        zoom_levels = [15, 16, 17]
+        
+        for zoom in zoom_levels:
+            x_tile, y_tile = self._deg2tile(lat, lon, zoom)
+            
+            for source in tile_sources:
+                try:
+                    # Select subdomain
+                    import random
+                    subdomain = random.choice(source['subdomains']) if source['subdomains'] else ''
+                    
+                    # Format URL
+                    if '{s}' in source['url_template']:
+                        url = source['url_template'].format(s=subdomain, x=x_tile, y=y_tile, z=zoom)
+                    else:
+                        url = source['url_template'].format(x=x_tile, y=y_tile, z=zoom)
+                    
+                    # Add headers to mimic browser request
+                    headers = {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                        'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+                        'Accept-Language': 'en-US,en;q=0.9',
+                        'Accept-Encoding': 'gzip, deflate, br',
+                        'Cache-Control': 'no-cache',
+                        'Pragma': 'no-cache'
+                    }
+                    
+                    response = requests.get(url, timeout=15, headers=headers)
+                    
+                    if response.status_code == 200 and len(response.content) > 1000:  # Valid image
+                        try:
+                            import PIL.Image
+                            from io import BytesIO
+                            
+                            img = PIL.Image.open(BytesIO(response.content))
+                            img_array = np.array(img.convert('RGB'))
+                            
+                            # Resize to standard size
+                            if img_array.shape[:2] != (512, 512):
+                                img_resized = PIL.Image.fromarray(img_array).resize((512, 512))
+                                img_array = np.array(img_resized)
+                            
+                            logger.info(f"Downloaded satellite image from {source['name']} (zoom {zoom})")
+                            return img_array
+                            
+                        except Exception as img_error:
+                            logger.debug(f"Image processing error for {source['name']}: {img_error}")
+                            continue
+                    
+                except Exception as e:
+                    logger.debug(f"Failed to download from {source['name']}: {e}")
+                    continue
+        
+        # If all sources fail, try alternative APIs
+        return self._try_alternative_satellite_apis(lat, lon)
     
     def _create_synthetic_imagery(self, site_info: Dict) -> np.ndarray:
         """Create synthetic satellite imagery for testing"""
@@ -527,3 +579,126 @@ RESEARCH PRIORITY: {confidence} - This site warrants {'immediate' if confidence 
         y_tile = int((1.0 - math.asinh(math.tan(lat_rad)) / math.pi) / 2.0 * n)
         
         return x_tile, y_tile
+    
+    def _try_alternative_satellite_apis(self, lat: float, lon: float) -> Optional[np.ndarray]:
+        """Try alternative satellite imagery APIs"""
+        
+        alternative_sources = [
+            {
+                'name': 'Mapbox Satellite',
+                'url_template': 'https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/512/{z}/{x}/{y}@2x?access_token={token}',
+                'requires_token': True
+            },
+            {
+                'name': 'NASA Worldview',
+                'url_template': 'https://map1.vis.earthdata.nasa.gov/wmts-geo/1.0.0/MODIS_Aqua_CorrectedReflectance_TrueColor/default/2023-01-01/EPSG4326_250m/{z}/{y}/{x}.jpg',
+                'requires_token': False
+            },
+            {
+                'name': 'Sentinel Hub',
+                'base_url': 'https://services.sentinel-hub.com/ogc/wms/',
+                'requires_token': True
+            }
+        ]
+        
+        for zoom in [14, 15, 16]:
+            x_tile, y_tile = self._deg2tile(lat, lon, zoom)
+            
+            for source in alternative_sources:
+                if source['requires_token']:
+                    continue  # Skip token-required sources for now
+                
+                try:
+                    if source['name'] == 'NASA Worldview':
+                        url = source['url_template'].format(z=zoom, x=x_tile, y=y_tile)
+                        
+                        headers = {
+                            'User-Agent': 'Archaeological Survey Tool/1.0',
+                            'Accept': 'image/*'
+                        }
+                        
+                        response = requests.get(url, timeout=20, headers=headers)
+                        
+                        if response.status_code == 200 and len(response.content) > 1000:
+                            try:
+                                import PIL.Image
+                                from io import BytesIO
+                                
+                                img = PIL.Image.open(BytesIO(response.content))
+                                img_array = np.array(img.convert('RGB'))
+                                
+                                if img_array.shape[:2] != (512, 512):
+                                    img_resized = PIL.Image.fromarray(img_array).resize((512, 512))
+                                    img_array = np.array(img_resized)
+                                
+                                logger.info(f"Downloaded from {source['name']} (zoom {zoom})")
+                                return img_array
+                                
+                            except Exception as img_error:
+                                logger.debug(f"Image processing error for {source['name']}: {img_error}")
+                                continue
+                
+                except Exception as e:
+                    logger.debug(f"Failed alternative source {source['name']}: {e}")
+                    continue
+        
+        logger.warning("All satellite image sources failed")
+        return None
+    
+    def _search_amazon_coordinates(self) -> List[Dict]:
+        """Search for archaeological sites in Amazon region using known coordinates"""
+        
+        # Amazon basin archaeological regions of interest
+        amazon_sites = [
+            {
+                'name': 'Monte Alegre Archaeological Complex',
+                'lat': -2.0, 'lon': -54.1,
+                'priority': 'highest',
+                'expected_features': ['cave_paintings', 'settlements']
+            },
+            {
+                'name': 'Marajoara Culture Region',
+                'lat': -0.8, 'lon': -49.5,
+                'priority': 'highest', 
+                'expected_features': ['mounds', 'ceramics', 'earthworks']
+            },
+            {
+                'name': 'Rio Negro Archaeological Zone',
+                'lat': -1.5, 'lon': -62.0,
+                'priority': 'high',
+                'expected_features': ['petroglyphs', 'settlements']
+            },
+            {
+                'name': 'Acre Geoglyph Complex',
+                'lat': -9.8, 'lon': -67.9,
+                'priority': 'highest',
+                'expected_features': ['earthworks', 'circular_patterns', 'geometric_earthworks']
+            },
+            {
+                'name': 'Santarem Archaeological Area',
+                'lat': -2.4, 'lon': -54.7,
+                'priority': 'high',
+                'expected_features': ['settlements', 'pottery', 'ceremonial_sites']
+            },
+            {
+                'name': 'Upper Xingu Cultural Park',
+                'lat': -12.1, 'lon': -53.2,
+                'priority': 'high',
+                'expected_features': ['circular_villages', 'roads', 'causeways']
+            },
+            {
+                'name': 'Llanos de Mojos Extended',
+                'lat': -14.8, 'lon': -64.9,
+                'priority': 'highest',
+                'expected_features': ['raised_fields', 'canals', 'forest_islands']
+            },
+            {
+                'name': 'Tapajós River Confluence',
+                'lat': -2.5, 'lon': -54.8,
+                'priority': 'medium',
+                'expected_features': ['settlements', 'pottery_traditions']
+            }
+        ]
+        
+        logger.info(f"Amazon archaeological survey: {len(amazon_sites)} target regions identified")
+        return amazon_sites

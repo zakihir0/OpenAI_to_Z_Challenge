@@ -76,33 +76,19 @@ class ArchaeologicalAnalysisSystem:
 def main():
     """Main execution function"""
     
-    # Define target archaeological sites
-    target_sites = [
-        {
-            'name': 'Llanos de Mojos Border Region',
-            'lat': -15.200, 'lon': -64.800,
-            'priority': 'highest',
-            'expected_features': ['raised_fields', 'canals', 'earthworks']
-        },
-        {
-            'name': 'Acre Geoglyph Extension Area',
-            'lat': -10.500, 'lon': -67.800,
-            'priority': 'highest',
-            'expected_features': ['earthworks', 'circular_patterns']
-        },
-        {
-            'name': 'Upper Xingu Expansion Zone',
-            'lat': -12.500, 'lon': -52.800,
-            'priority': 'high',
-            'expected_features': ['circular_patterns', 'linear_features']
-        }
-    ]
-    
-    # Initialize system
+    # Initialize system first to access Amazon coordinates
     system = ArchaeologicalAnalysisSystem()
     
-    # Analyze sites
-    results = system.analyze_sites(target_sites)
+    # Get Amazon archaeological sites from the analyzer
+    target_sites = system.analyzer._search_amazon_coordinates()
+    
+    # Filter to highest priority sites for initial analysis
+    priority_sites = [site for site in target_sites if site['priority'] == 'highest']
+    
+    logger.info(f"Amazon archaeological survey initialized: {len(target_sites)} total sites, {len(priority_sites)} highest priority")
+    
+    # Analyze highest priority sites first
+    results = system.analyze_sites(priority_sites)
     
     # Generate reports
     output_files = system.generate_reports(results)
