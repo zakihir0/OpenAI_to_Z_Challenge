@@ -24,21 +24,25 @@ This project implements a comprehensive AI-powered system for detecting archaeol
 
 ```
 /home/myuser/OpenAI_to_Z_Challenge/
-├── openai_archaeological_analysis.py  # Main OpenAI integration and site detection
-├── rag_knowledge_base.py              # RAG system with archaeological knowledge
-├── satellite_data_processing.py       # Satellite imagery processing and analysis
-├── comprehensive_example.py           # Complete pipeline demonstration
-├── requirements.txt                   # Python dependencies
-├── data/                             # Sample data and coordinates
-├── results/                          # Analysis outputs
-└── kernels/                          # Downloaded Kaggle notebooks
+├── run.py                            # Main execution script
+├── src/                              # Source code
+│   ├── main.py                       # Basic archaeological analysis
+│   ├── hybrid_cv_llm_solution.py     # Hybrid CV + LLM pipeline
+│   └── openai_archaeological_analysis.py  # Comprehensive analysis
+├── config/                           # Configuration files
+│   ├── .env                          # API keys and settings
+│   └── .env.example                  # Configuration template
+├── results/                          # Timestamped analysis outputs
+├── data/                            # Input data and cache
+├── requirements.txt                  # Python dependencies
+└── README.md                        # This file
 ```
 
 ## Installation
 
 ### Prerequisites
 - Python 3.8+
-- OpenAI API key
+- OpenRouter API key (supports Deepseek and other models)
 - Required Python packages
 
 ### Setup
@@ -49,8 +53,19 @@ cd /home/myuser/OpenAI_to_Z_Challenge
 # Install requirements
 pip install -r requirements.txt
 
-# Set OpenAI API key
-export OPENAI_API_KEY='your-api-key-here'
+# Copy environment template and configure API settings
+cp .env.example .env
+
+# Edit .env file with your OpenRouter API key
+# Get your API key from https://openrouter.ai/
+# OPENAI_API_KEY=your_openrouter_api_key_here
+# OPENAI_BASE_URL=https://openrouter.ai/api/v1
+# OPENAI_MODEL=deepseek/deepseek-r1-0528:free
+
+# Alternative: Set environment variables directly
+export OPENAI_API_KEY='your-openrouter-api-key'
+export OPENAI_BASE_URL='https://openrouter.ai/api/v1'
+export OPENAI_MODEL='deepseek/deepseek-r1-0528:free'
 
 # Optional: Install additional geospatial libraries
 pip install earthengine-api  # Requires additional Google Earth Engine setup
@@ -58,45 +73,49 @@ pip install earthengine-api  # Requires additional Google Earth Engine setup
 
 ## Usage
 
-### Quick Start - Comprehensive Analysis
+### Quick Start
 ```bash
-# Run complete archaeological analysis pipeline
-python comprehensive_example.py
+# Basic analysis (fast, simple detection)
+python run.py basic
+
+# Hybrid CV + LLM analysis (comprehensive, recommended)
+python run.py hybrid
+
+# Full comprehensive analysis (all features)
+python run.py comprehensive
 ```
 
-### Individual Components
+### Analysis Modes
 
-#### 1. OpenAI Archaeological Analysis
+#### 1. Basic Analysis (`python run.py basic`)
+- Fast geometric pattern detection
+- Computer vision analysis
+- Basic OpenAI integration
+- Good for quick site screening
+
+#### 2. Hybrid CV + LLM Analysis (`python run.py hybrid`)
+- Two-stage pipeline: CV filtering + LLM analysis
+- Mock satellite data generation
+- Detailed archaeological assessment
+- Recommended for most use cases
+
+#### 3. Comprehensive Analysis (`python run.py comprehensive`)
+- Full feature extraction and analysis
+- Advanced statistical methods
+- Regional batch processing
+- Research-grade output
+
+### Individual Module Usage
 ```python
+# Import specific modules
+sys.path.append('src')
+from main import ArchaeologicalDetector
+from hybrid_cv_llm_solution import run_full_pipeline
 from openai_archaeological_analysis import ArchaeologicalSiteDetector
 
-detector = ArchaeologicalSiteDetector(api_key="your-key")
-coordinates = (-8.5, -63.2)  # Example Amazon coordinates
-satellite_data = {...}  # Your satellite data
-
-analysis = detector.analyze_potential_site(coordinates, satellite_data)
-```
-
-#### 2. RAG Knowledge System
-```python
-from rag_knowledge_base import RAGArchaeologist
-
-rag_system = RAGArchaeologist(api_key="your-key")
-
-site_description = "Circular earthwork structures near river tributary..."
-analysis = rag_system.analyze_site_with_context(site_description, coordinates)
-investigation_plan = rag_system.generate_investigation_plan(analysis, coordinates)
-```
-
-#### 3. Satellite Data Processing
-```python
-from satellite_data_processing import SatelliteImageProcessor
-
-processor = SatelliteImageProcessor()
-bands = processor.load_image_data()  # Load your satellite data
-indices = processor.calculate_spectral_indices()
-patterns = processor.detect_geometric_patterns()
-results = processor.create_composite_analysis()
+# Use individual components as needed
+detector = ArchaeologicalDetector()
+sites = detector.process_region('data/images', 'data/coordinates.json')
 ```
 
 ### Input Data Formats
@@ -215,8 +234,13 @@ results = processor.create_composite_analysis()
 
 ### Environment Variables
 ```bash
-export OPENAI_API_KEY='your-openai-api-key'
-export GOOGLE_EARTH_ENGINE_KEY='path/to/ee-key.json'  # Optional
+# OpenRouter + Deepseek Configuration
+export OPENAI_API_KEY='your-openrouter-api-key'
+export OPENAI_BASE_URL='https://openrouter.ai/api/v1'
+export OPENAI_MODEL='deepseek/deepseek-r1-0528:free'
+
+# Optional: Google Earth Engine
+export GOOGLE_EARTH_ENGINE_KEY='path/to/ee-key.json'
 ```
 
 ### API Rate Limits
@@ -257,10 +281,12 @@ The system includes realistic mock data generation for:
 ## Troubleshooting
 
 ### Common Issues
-1. **OpenAI API Key**: Ensure valid key is set in environment
-2. **Memory Issues**: Reduce image tile size for large datasets
-3. **Dependency Conflicts**: Use virtual environment for isolation
-4. **Coordinate Systems**: Ensure consistent CRS across datasets
+1. **OpenRouter API Key**: Ensure valid OpenRouter key is set in environment
+2. **Model Selection**: Verify model name is correct (e.g., deepseek/deepseek-r1-0528:free)
+3. **Base URL**: Confirm OPENAI_BASE_URL points to https://openrouter.ai/api/v1
+4. **Memory Issues**: Reduce image tile size for large datasets
+5. **Dependency Conflicts**: Use virtual environment for isolation
+6. **Coordinate Systems**: Ensure consistent CRS across datasets
 
 ### Debug Mode
 ```python
