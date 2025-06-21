@@ -680,59 +680,225 @@ def generate_satellite_imagery_and_mapping(results: List[Dict], timestamp: str):
             logger.error(f"Error creating imagery for {site_name}: {e}")
 
 def create_integrated_site_visualization(result: Dict, timestamp: str):
-    """Create integrated visualization combining analysis and imagery"""
+    """Create integrated visualization combining real satellite imagery, analysis and AI assessment"""
     
     site_info = result['site_info']
     site_name = site_info['name'].replace(' ', '_')
     cv_analysis = result['computer_vision_analysis']
+    ai_assessment = result['ai_interpretation']
     
-    # Create figure with multiple subplots
-    fig, axes = plt.subplots(2, 3, figsize=(18, 12))
-    fig.suptitle(f'COMPREHENSIVE ARCHAEOLOGICAL ANALYSIS\\n{site_info["name"]}\\n{site_info["lat"]:.3f}, {site_info["lon"]:.3f}', 
-                 fontsize=16, fontweight='bold')
+    # Create figure with comprehensive layout
+    fig = plt.figure(figsize=(24, 16))
+    gs = fig.add_gridspec(3, 4, height_ratios=[1, 1, 0.8], width_ratios=[1, 1, 1, 1])
     
-    # Generate synthetic satellite imagery
-    satellite_image = create_realistic_satellite_image(site_info)
+    fig.suptitle(f'COMPLETE ARCHAEOLOGICAL SITE ANALYSIS\\n{site_info["name"]} | {site_info["lat"]:.3f}, {site_info["lon"]:.3f} | Score: {result["archaeological_score"]:.2f}/1.0 ({result["confidence_level"]})', 
+                 fontsize=18, fontweight='bold', y=0.98)
     
-    # Main satellite image
-    axes[0, 0].imshow(satellite_image)
-    axes[0, 0].set_title('Satellite Imagery\\n(Synthetic High-Resolution)', fontweight='bold')
-    axes[0, 0].axis('off')
+    # Download real satellite image first
+    real_satellite_image = download_and_load_real_satellite_image(site_info, timestamp)
     
-    # Feature detection overlay
-    feature_overlay = create_feature_detection_overlay(satellite_image, cv_analysis)
-    axes[0, 1].imshow(feature_overlay)
-    axes[0, 1].set_title('Archaeological Features\\n(Computer Vision Analysis)', fontweight='bold')
-    axes[0, 1].axis('off')
+    # Generate synthetic backup if real image fails
+    if real_satellite_image is None:
+        real_satellite_image = create_realistic_satellite_image(site_info)
+        real_image_title = 'Satellite Imagery (Synthetic)'
+    else:
+        real_image_title = 'Real Satellite Imagery (Google)'
     
-    # Vegetation analysis
-    vegetation_analysis = create_vegetation_analysis_map(satellite_image)
-    axes[0, 2].imshow(vegetation_analysis, cmap='RdYlGn')
-    axes[0, 2].set_title('Vegetation Analysis\\n(NDVI Approximation)', fontweight='bold')
-    axes[0, 2].axis('off')
+    # Row 1: Real satellite imagery and analysis overlays
+    ax1 = fig.add_subplot(gs[0, 0])
+    ax1.imshow(real_satellite_image)
+    ax1.set_title(real_image_title, fontweight='bold', fontsize=12)
+    ax1.axis('off')
     
-    # Pattern detection
-    pattern_map = create_pattern_detection_map(satellite_image)
-    axes[1, 0].imshow(pattern_map, cmap='hot')
-    axes[1, 0].set_title('Pattern Detection\\n(Edge & Geometry)', fontweight='bold')
-    axes[1, 0].axis('off')
+    ax2 = fig.add_subplot(gs[0, 1])
+    feature_overlay = create_feature_detection_overlay(real_satellite_image, cv_analysis)
+    ax2.imshow(feature_overlay)
+    ax2.set_title('Archaeological Features\\n(Computer Vision Detection)', fontweight='bold', fontsize=12)
+    ax2.axis('off')
     
-    # Analysis statistics
-    create_analysis_statistics_plot(axes[1, 1], result)
-    axes[1, 1].set_title('Analysis Statistics', fontweight='bold')
+    ax3 = fig.add_subplot(gs[0, 2])
+    vegetation_analysis = create_vegetation_analysis_map(real_satellite_image)
+    im3 = ax3.imshow(vegetation_analysis, cmap='RdYlGn')
+    ax3.set_title('Vegetation Analysis\\n(NDVI Proxy)', fontweight='bold', fontsize=12)
+    ax3.axis('off')
+    plt.colorbar(im3, ax=ax3, shrink=0.6)
     
-    # Summary information
-    create_summary_info_panel(axes[1, 2], result)
-    axes[1, 2].set_title('Site Assessment', fontweight='bold')
+    ax4 = fig.add_subplot(gs[0, 3])
+    pattern_map = create_pattern_detection_map(real_satellite_image)
+    im4 = ax4.imshow(pattern_map, cmap='hot')
+    ax4.set_title('Pattern Detection\\n(Edge Density)', fontweight='bold', fontsize=12)
+    ax4.axis('off')
+    plt.colorbar(im4, ax=ax4, shrink=0.6)
+    
+    # Row 2: Analysis statistics and site information
+    ax5 = fig.add_subplot(gs[1, 0])
+    create_analysis_statistics_plot(ax5, result)
+    ax5.set_title('Feature Statistics', fontweight='bold', fontsize=12)
+    
+    ax6 = fig.add_subplot(gs[1, 1])
+    create_confidence_radar_chart(ax6, result)
+    ax6.set_title('Confidence Assessment', fontweight='bold', fontsize=12)
+    
+    ax7 = fig.add_subplot(gs[1, 2:])
+    create_site_summary_panel(ax7, result)
+    ax7.set_title('Site Assessment Summary', fontweight='bold', fontsize=12)
+    
+    # Row 3: AI Analysis (full width)
+    ax8 = fig.add_subplot(gs[2, :])
+    create_ai_analysis_panel(ax8, ai_assessment, result)
+    ax8.set_title('🤖 EXPERT AI ARCHAEOLOGICAL ASSESSMENT', fontweight='bold', fontsize=14)
     
     plt.tight_layout()
+    plt.subplots_adjust(top=0.94, bottom=0.02, hspace=0.3, wspace=0.3)
     
-    # Save visualization
-    output_file = f'results/comprehensive_analysis_{site_name}_{timestamp}.png'
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    # Save comprehensive visualization
+    output_file = f'results/complete_analysis_{site_name}_{timestamp}.png'
+    plt.savefig(output_file, dpi=300, bbox_inches='tight', facecolor='white')
     plt.close()
     
-    logger.info(f"  ✓ Comprehensive visualization: {output_file}")
+    logger.info(f"  ✓ Complete analysis visualization: {output_file}")
+
+def download_and_load_real_satellite_image(site_info: Dict, timestamp: str) -> Optional[np.ndarray]:
+    """Download and load real satellite image for analysis"""
+    
+    try:
+        lat, lon = site_info['lat'], site_info['lon']
+        
+        # Calculate tile coordinates for zoom level 16 (good resolution)
+        x_tile, y_tile = deg2tile(lat, lon, 16)
+        
+        # Try Google Satellite first
+        url = f'https://mt1.google.com/vt/lyrs=s&x={x_tile}&y={y_tile}&z=16'
+        
+        response = requests.get(url, timeout=15)
+        if response.status_code == 200:
+            # Save the tile
+            site_name = site_info['name'].replace(' ', '_')
+            filename = f'results/real_satellite_{site_name}_z16_{timestamp}.png'
+            
+            with open(filename, 'wb') as f:
+                f.write(response.content)
+            
+            # Load and return as numpy array
+            import PIL.Image
+            img = PIL.Image.open(filename)
+            img_array = np.array(img.convert('RGB'))
+            
+            # Resize to standard size if needed
+            if img_array.shape != (256, 256, 3):
+                img_resized = PIL.Image.fromarray(img_array).resize((512, 512))
+                img_array = np.array(img_resized)
+            
+            logger.info(f"  ✓ Real satellite image loaded: {filename}")
+            return img_array
+            
+    except Exception as e:
+        logger.warning(f"  ✗ Failed to load real satellite image: {e}")
+    
+    return None
+
+def create_confidence_radar_chart(ax, result: Dict):
+    """Create radar chart showing confidence in different analysis aspects"""
+    
+    cv_analysis = result['computer_vision_analysis']
+    
+    # Confidence metrics (normalized 0-1)
+    categories = ['Geometric\\nFeatures', 'Texture\\nComplexity', 'Vegetation\\nAnomalies', 
+                 'Spatial\\nPatterns', 'Edge\\nDensity', 'Overall\\nScore']
+    
+    values = [
+        min(cv_analysis['geometric_features']['total_count'] / 100.0, 1.0),
+        cv_analysis['texture_analysis']['entropy'] / 8.0,
+        cv_analysis.get('vegetation_analysis', {}).get('anomaly_areas', 0) * 10,
+        cv_analysis['spatial_patterns']['symmetry_score'],
+        cv_analysis['texture_analysis']['edge_density'] * 4,
+        result['archaeological_score']
+    ]
+    
+    # Create radar chart
+    angles = np.linspace(0, 2 * np.pi, len(categories), endpoint=False).tolist()
+    values += values[:1]  # Complete the circle
+    angles += angles[:1]
+    
+    ax.plot(angles, values, 'o-', linewidth=2, color='blue', alpha=0.7)
+    ax.fill(angles, values, alpha=0.25, color='blue')
+    ax.set_xticks(angles[:-1])
+    ax.set_xticklabels(categories, fontsize=9)
+    ax.set_ylim(0, 1)
+    ax.set_yticks([0.2, 0.4, 0.6, 0.8, 1.0])
+    ax.set_yticklabels(['0.2', '0.4', '0.6', '0.8', '1.0'], fontsize=8)
+    ax.grid(True)
+
+def create_site_summary_panel(ax, result: Dict):
+    """Create enhanced site summary panel"""
+    
+    site_info = result['site_info']
+    score = result['archaeological_score']
+    confidence = result['confidence_level']
+    cv_analysis = result['computer_vision_analysis']
+    
+    # Priority color coding
+    priority_colors = {'highest': '🔴', 'high': '🟠', 'medium': '🟡', 'low': '🟢'}
+    priority_icon = priority_colors.get(site_info.get('priority', 'medium'), '⚪')
+    
+    # Confidence color coding
+    confidence_colors = {'HIGH': '🟢', 'MEDIUM': '🟡', 'LOW': '🔴'}
+    confidence_icon = confidence_colors.get(confidence, '⚪')
+    
+    summary_text = f"""
+📍 SITE INFORMATION
+{priority_icon} Priority: {site_info.get('priority', 'Unknown').upper()}
+🌍 Coordinates: {site_info['lat']:.4f}, {site_info['lon']:.4f}
+🎯 Expected Features: {', '.join(site_info.get('expected_features', []))}
+
+📊 ANALYSIS RESULTS  
+{confidence_icon} Confidence: {confidence} | Score: {score:.3f}/1.0
+🔍 Total Features: {cv_analysis['geometric_features']['total_count']}
+🔵 Circular: {cv_analysis['geometric_features']['circular_count']} | 🔗 Linear: {cv_analysis['geometric_features']['linear_count']}
+📐 Regular Patterns: {cv_analysis['geometric_features']['regular_count']}
+
+🌿 VEGETATION ANALYSIS
+Coverage: {cv_analysis.get('vegetation_analysis', {}).get('vegetation_coverage', 0):.1%}
+Anomalies: {cv_analysis.get('vegetation_analysis', {}).get('anomaly_areas', 0):.1%}
+NDVI Mean: {cv_analysis.get('vegetation_analysis', {}).get('ndvi_mean', 0):.3f}
+
+🔬 TECHNICAL METRICS
+Edge Density: {cv_analysis['texture_analysis']['edge_density']:.3f}
+Entropy: {cv_analysis['texture_analysis']['entropy']:.2f}
+Symmetry: {cv_analysis['spatial_patterns']['symmetry_score']:.3f}
+
+🎯 RESEARCH PRIORITY
+{'🚨 IMMEDIATE INVESTIGATION' if score > 0.7 else '📋 PLANNED INVESTIGATION' if score > 0.4 else '👁️ MONITORING REQUIRED'}
+"""
+    
+    ax.text(0.02, 0.98, summary_text, transform=ax.transAxes, 
+            verticalalignment='top', fontsize=10, fontfamily='monospace',
+            bbox=dict(boxstyle="round,pad=0.5", facecolor="lightgray", alpha=0.8))
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis('off')
+
+def create_ai_analysis_panel(ax, ai_assessment: str, result: Dict):
+    """Create AI analysis text panel with formatting"""
+    
+    # Format AI assessment for better readability
+    formatted_assessment = ai_assessment.replace('\\n', '\n')
+    
+    # Add recommendations
+    recommendations = result.get('recommendations', [])
+    if recommendations:
+        formatted_assessment += f"\n\n🔮 SPECIFIC RECOMMENDATIONS:\n"
+        for i, rec in enumerate(recommendations[:5], 1):
+            formatted_assessment += f"{i}. {rec}\n"
+    
+    # Create scrollable text area
+    ax.text(0.01, 0.99, formatted_assessment, transform=ax.transAxes, 
+            verticalalignment='top', fontsize=9, fontfamily='monospace',
+            bbox=dict(boxstyle="round,pad=0.8", facecolor="lightyellow", alpha=0.9),
+            wrap=True)
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.axis('off')
 
 def create_realistic_satellite_image(site_info: Dict) -> np.ndarray:
     """Create realistic satellite imagery based on site characteristics"""
