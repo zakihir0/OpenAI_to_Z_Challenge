@@ -620,7 +620,7 @@ def generate_fixed_analysis_report(results: List[Dict], timestamp: str):
             f"   - Regular patterns: {cv['regular_count']}",
             "",
             f"   🤖 AI ASSESSMENT:",
-            f"   {result['ai_interpretation'][:200]}...",
+            f"   {result['ai_interpretation']}",
             "",
             f"   📋 RECOMMENDATIONS:",
         ])
