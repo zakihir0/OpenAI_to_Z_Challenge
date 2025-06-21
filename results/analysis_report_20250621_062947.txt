@@ -1,0 +1,22 @@
+ARCHAEOLOGICAL ANALYSIS REPORT\n==================================================\nAnalysis Date: 2025-06-21 06:29:47\nSites Analyzed: 3\nAnalysis Method: Enhanced CV + AI Integration\n\nARCHAEOLOGICAL DISCOVERIES:\n\n1. Llanos de Mojos Border Region\n   Coordinates: -15.200, -64.800\n   Archaeological Score: 0.59/1.0\n   Confidence Level: MEDIUM\n\n   DETECTED FEATURES:\n   - Total Geometric: 36\n   - Circular (earthworks): 0\n   - Linear (roads/canals): 6\n   - Regular patterns: 0\n\n   AI ASSESSMENT:\n   
+EXPERT ARCHAEOLOGICAL ASSESSMENT - Llanos de Mojos Border Region
+
+SITE CLASSIFICATION: LINEAR FEATURE SYSTEM
+ARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION
+CONFIDENCE LEVEL: LOW
+
+FEATURE...\n\n   RECOMMENDATIONS:\n   • Additional remote sensing analysis\n   • Comparative study with known archaeological sites\n   • Environmental impact assessment\n\n   ========================================\n\n2. Acre Geoglyph Extension Area\n   Coordinates: -10.500, -67.800\n   Archaeological Score: 0.48/1.0\n   Confidence Level: MEDIUM\n\n   DETECTED FEATURES:\n   - Total Geometric: 105\n   - Circular (earthworks): 0\n   - Linear (roads/canals): 1\n   - Regular patterns: 0\n\n   AI ASSESSMENT:\n   
+EXPERT ARCHAEOLOGICAL ASSESSMENT - Acre Geoglyph Extension Area
+
+SITE CLASSIFICATION: MIXED ARCHAEOLOGICAL FEATURES
+ARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION
+CONFIDENCE LEVEL: LOW
+
+...\n\n   RECOMMENDATIONS:\n   • Additional remote sensing analysis\n   • Comparative study with known archaeological sites\n   • Environmental impact assessment\n\n   ========================================\n\n3. Upper Xingu Expansion Zone\n   Coordinates: -12.500, -52.800\n   Archaeological Score: 0.64/1.0\n   Confidence Level: MEDIUM\n\n   DETECTED FEATURES:\n   - Total Geometric: 103\n   - Circular (earthworks): 0\n   - Linear (roads/canals): 6\n   - Regular patterns: 0\n\n   AI ASSESSMENT:\n   
+EXPERT ARCHAEOLOGICAL ASSESSMENT - Upper Xingu Expansion Zone
+
+SITE CLASSIFICATION: LINEAR FEATURE SYSTEM
+ARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION
+CONFIDENCE LEVEL: LOW
+
+FEATURE AN...\n\n   RECOMMENDATIONS:\n   • Additional remote sensing analysis\n   • Comparative study with known archaeological sites\n   • Environmental impact assessment\n\n   ========================================\n\nSUMMARY STATISTICS:\n- Average Archaeological Score: 0.57\n- High Confidence Sites: 0/3\n- Total Features Detected: 244\n\nTECHNICAL SUCCESS:\n- AI analysis system operational\n- Computer vision analysis enhanced\n- Expert fallback system functional\n- Comprehensive scoring implemented
