@@ -1,0 +1,361 @@
+[
+  {
+    "site_info": {
+      "name": "Llanos de Mojos Border Region",
+      "lat": -15.2,
+      "lon": -64.8,
+      "priority": "highest",
+      "expected_features": [
+        "raised_fields",
+        "canals",
+        "earthworks"
+      ]
+    },
+    "timestamp": "2025-06-21T05:28:32.637987",
+    "image_properties": {
+      "shape": [
+        512,
+        512,
+        3
+      ],
+      "dtype": "uint8",
+      "size_mb": 0.75
+    },
+    "computer_vision_analysis": {
+      "geometric_features": {
+        "total_count": 66,
+        "circular_count": 0,
+        "linear_count": 5,
+        "regular_count": 0,
+        "feature_details": [
+          {
+            "area": 55.5,
+            "circularity": 0.025185372854038397,
+            "aspect_ratio": 1.7402061691161217,
+            "regularity": 0.025185372854038397
+          },
+          {
+            "area": 85.5,
+            "circularity": 0.004485361800082741,
+            "aspect_ratio": 1.9230769230769231,
+            "regularity": 0.004485361800082741
+          },
+          {
+            "area": 70.0,
+            "circularity": 0.005147478734568679,
+            "aspect_ratio": 1.8560001507457202,
+            "regularity": 0.005147478734568679
+          },
+          {
+            "area": 87.0,
+            "circularity": 0.053062615823190724,
+            "aspect_ratio": 1.3129769970841374,
+            "regularity": 0.053062615823190724
+          },
+          {
+            "area": 132.0,
+            "circularity": 0.04620149127897447,
+            "aspect_ratio": 1.1230769973115915,
+            "regularity": 0.04620149127897447
+          },
+          {
+            "area": 55.5,
+            "circularity": 0.014805973976080938,
+            "aspect_ratio": 1.4035087061473333,
+            "regularity": 0.014805973976080938
+          },
+          {
+            "area": 134.0,
+            "circularity": 0.012528201368654174,
+            "aspect_ratio": 1.5295405541583404,
+            "regularity": 0.012528201368654174
+          },
+          {
+            "area": 62.0,
+            "circularity": 0.005941111106157656,
+            "aspect_ratio": 2.932886011892021,
+            "regularity": 0.005941111106157656
+          },
+          {
+            "area": 68.5,
+            "circularity": 0.005549855939405232,
+            "aspect_ratio": 2.2591036667249202,
+            "regularity": 0.005549855939405232
+          },
+          {
+            "area": 101.5,
+            "circularity": 0.013492431776895667,
+            "aspect_ratio": 1.1418048436559214,
+            "regularity": 0.013492431776895667
+          }
+        ]
+      },
+      "texture_analysis": {
+        "mean_intensity": 53.52385330200195,
+        "std_intensity": 18.198528167957555,
+        "entropy": 6.112169153151671,
+        "edge_density": 0.2634620666503906
+      },
+      "vegetation_analysis": {
+        "ndvi_mean": 0.01085225450288437,
+        "ndvi_std": 0.30076640332156374,
+        "vegetation_coverage": 0.3846015930175781,
+        "green_dominance": 0.5180223994139618,
+        "anomaly_areas": 0.05035400390625
+      },
+      "spatial_patterns": {
+        "grid_regularity": 0.01,
+        "symmetry_score": 0.5267356722962623,
+        "pattern_strength": 0.34000781044807316
+      }
+    },
+    "ai_interpretation": "\nEXPERT ARCHAEOLOGICAL ASSESSMENT - Llanos de Mojos Border Region\n\nSITE CLASSIFICATION: LINEAR FEATURE SYSTEM\nARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION\nCONFIDENCE LEVEL: LOW\n\nFEATURE ANALYSIS:\nThe satellite imagery reveals 66 distinct geometric features, including 0 circular patterns and 5 linear structures. This pattern distribution is consistent with linear feature system typical of pre-Columbian Amazon settlements.\n\nCULTURAL CONTEXT:\nBased on the geographic location at -15.200, -64.800, this site falls within the broader Amazon archaeological region known for:\n- Geometric earthworks (similar to Acre geoglyphs)\n- Raised field agricultural systems\n- Complex settlement patterns from 500-1500 CE\n\nVEGETATION INDICATORS:\nVegetation analysis shows 5.0% anomalous areas, suggesting possible subsurface archaeological features. The NDVI patterns indicate 38% vegetation coverage with clear geometric disruptions.\n\nSPATIAL PATTERNS:\nGrid regularity score of 0.01 and symmetry score of 0.53 indicate planned construction rather than natural formation.\n\nRECOMMENDATIONS:\n1. Ground-penetrating radar survey to confirm subsurface features\n2. High-resolution drone imagery for detailed mapping\n3. Consultation with local indigenous communities\n4. Archaeological field survey if patterns confirmed\n5. Comparative analysis with known Amazon archaeological sites\n\nRESEARCH PRIORITY: LOW - This site warrants eventual archaeological investigation.\n",
+    "archaeological_score": 0.6036735672296263,
+    "confidence_level": "MEDIUM",
+    "recommendations": [
+      "Additional remote sensing analysis",
+      "Comparative study with known archaeological sites",
+      "Environmental impact assessment",
+      "Preliminary field reconnaissance",
+      "Map linear feature network (potential road/canal system)"
+    ]
+  },
+  {
+    "site_info": {
+      "name": "Acre Geoglyph Extension Area",
+      "lat": -10.5,
+      "lon": -67.8,
+      "priority": "highest",
+      "expected_features": [
+        "earthworks",
+        "circular_patterns"
+      ]
+    },
+    "timestamp": "2025-06-21T05:28:32.686257",
+    "image_properties": {
+      "shape": [
+        512,
+        512,
+        3
+      ],
+      "dtype": "uint8",
+      "size_mb": 0.75
+    },
+    "computer_vision_analysis": {
+      "geometric_features": {
+        "total_count": 71,
+        "circular_count": 0,
+        "linear_count": 0,
+        "regular_count": 0,
+        "feature_details": [
+          {
+            "area": 56.5,
+            "circularity": 0.006432414027437401,
+            "aspect_ratio": 1.935684419362522,
+            "regularity": 0.006432414027437401
+          },
+          {
+            "area": 115.0,
+            "circularity": 0.017929022853653283,
+            "aspect_ratio": 1.657534352088469,
+            "regularity": 0.017929022853653283
+          },
+          {
+            "area": 59.0,
+            "circularity": 0.009647431033499788,
+            "aspect_ratio": 1.1946308384635187,
+            "regularity": 0.009647431033499788
+          },
+          {
+            "area": 56.0,
+            "circularity": 0.009916440452847923,
+            "aspect_ratio": 2.3050849097214496,
+            "regularity": 0.009916440452847923
+          },
+          {
+            "area": 57.5,
+            "circularity": 0.01228800468888518,
+            "aspect_ratio": 1.4729165835222868,
+            "regularity": 0.01228800468888518
+          },
+          {
+            "area": 58.5,
+            "circularity": 0.005387189924629449,
+            "aspect_ratio": 1.5849772416633037,
+            "regularity": 0.005387189924629449
+          },
+          {
+            "area": 67.5,
+            "circularity": 0.006025329560582459,
+            "aspect_ratio": 1.535502887543428,
+            "regularity": 0.006025329560582459
+          },
+          {
+            "area": 61.5,
+            "circularity": 0.054617505882750585,
+            "aspect_ratio": 2.255319210375024,
+            "regularity": 0.054617505882750585
+          },
+          {
+            "area": 75.5,
+            "circularity": 0.03460486888504184,
+            "aspect_ratio": 1.863999978444826,
+            "regularity": 0.03460486888504184
+          },
+          {
+            "area": 62.5,
+            "circularity": 0.004138617697905435,
+            "aspect_ratio": 1.6951218714189176,
+            "regularity": 0.004138617697905435
+          }
+        ]
+      },
+      "texture_analysis": {
+        "mean_intensity": 54.384521484375,
+        "std_intensity": 19.02495805275813,
+        "entropy": 6.162505709751487,
+        "edge_density": 0.2558135986328125
+      },
+      "vegetation_analysis": {
+        "ndvi_mean": 0.012599548693166977,
+        "ndvi_std": 0.2982287390857744,
+        "vegetation_coverage": 0.38709259033203125,
+        "green_dominance": 0.52106787587095,
+        "anomaly_areas": 0.0506439208984375
+      },
+      "spatial_patterns": {
+        "grid_regularity": 0.01,
+        "symmetry_score": 0.5241477517520681,
+        "pattern_strength": 0.3498230293011609
+      }
+    },
+    "ai_interpretation": "\nEXPERT ARCHAEOLOGICAL ASSESSMENT - Acre Geoglyph Extension Area\n\nSITE CLASSIFICATION: MIXED ARCHAEOLOGICAL FEATURES\nARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION\nCONFIDENCE LEVEL: LOW\n\nFEATURE ANALYSIS:\nThe satellite imagery reveals 71 distinct geometric features, including 0 circular patterns and 0 linear structures. This pattern distribution is consistent with mixed archaeological features typical of pre-Columbian Amazon settlements.\n\nCULTURAL CONTEXT:\nBased on the geographic location at -10.500, -67.800, this site falls within the broader Amazon archaeological region known for:\n- Geometric earthworks (similar to Acre geoglyphs)\n- Raised field agricultural systems\n- Complex settlement patterns from 500-1500 CE\n\nVEGETATION INDICATORS:\nVegetation analysis shows 5.1% anomalous areas, suggesting possible subsurface archaeological features. The NDVI patterns indicate 39% vegetation coverage with clear geometric disruptions.\n\nSPATIAL PATTERNS:\nGrid regularity score of 0.01 and symmetry score of 0.52 indicate planned construction rather than natural formation.\n\nRECOMMENDATIONS:\n1. Ground-penetrating radar survey to confirm subsurface features\n2. High-resolution drone imagery for detailed mapping\n3. Consultation with local indigenous communities\n4. Archaeological field survey if patterns confirmed\n5. Comparative analysis with known Amazon archaeological sites\n\nRESEARCH PRIORITY: LOW - This site warrants eventual archaeological investigation.\n",
+    "archaeological_score": 0.45341477517520684,
+    "confidence_level": "MEDIUM",
+    "recommendations": [
+      "Additional remote sensing analysis",
+      "Comparative study with known archaeological sites",
+      "Environmental impact assessment",
+      "Preliminary field reconnaissance"
+    ]
+  },
+  {
+    "site_info": {
+      "name": "Upper Xingu Expansion Zone",
+      "lat": -12.5,
+      "lon": -52.8,
+      "priority": "high",
+      "expected_features": [
+        "circular_patterns",
+        "linear_features"
+      ]
+    },
+    "timestamp": "2025-06-21T05:28:32.734294",
+    "image_properties": {
+      "shape": [
+        512,
+        512,
+        3
+      ],
+      "dtype": "uint8",
+      "size_mb": 0.75
+    },
+    "computer_vision_analysis": {
+      "geometric_features": {
+        "total_count": 78,
+        "circular_count": 0,
+        "linear_count": 3,
+        "regular_count": 0,
+        "feature_details": [
+          {
+            "area": 52.0,
+            "circularity": 0.0325528122368359,
+            "aspect_ratio": 1.2477063300693374,
+            "regularity": 0.0325528122368359
+          },
+          {
+            "area": 91.0,
+            "circularity": 0.01526454324388813,
+            "aspect_ratio": 2.6055900656836166,
+            "regularity": 0.01526454324388813
+          },
+          {
+            "area": 56.0,
+            "circularity": 0.009840240779306536,
+            "aspect_ratio": 1.6562497526887217,
+            "regularity": 0.009840240779306536
+          },
+          {
+            "area": 81.5,
+            "circularity": 0.028495683105947474,
+            "aspect_ratio": 2.1333333333333333,
+            "regularity": 0.028495683105947474
+          },
+          {
+            "area": 103.0,
+            "circularity": 0.004979948117716232,
+            "aspect_ratio": 1.7709090570705472,
+            "regularity": 0.004979948117716232
+          },
+          {
+            "area": 62.5,
+            "circularity": 0.025921606108793124,
+            "aspect_ratio": 1.2408759799283378,
+            "regularity": 0.025921606108793124
+          },
+          {
+            "area": 73.5,
+            "circularity": 0.025567499969265436,
+            "aspect_ratio": 2.28033459753184,
+            "regularity": 0.025567499969265436
+          },
+          {
+            "area": 93.5,
+            "circularity": 0.017584330824282166,
+            "aspect_ratio": 1.857142780209612,
+            "regularity": 0.017584330824282166
+          },
+          {
+            "area": 85.0,
+            "circularity": 0.014395951014846808,
+            "aspect_ratio": 1.7483444706756481,
+            "regularity": 0.014395951014846808
+          },
+          {
+            "area": 97.5,
+            "circularity": 0.0044472060570495565,
+            "aspect_ratio": 1.0634495992036466,
+            "regularity": 0.0044472060570495565
+          }
+        ]
+      },
+      "texture_analysis": {
+        "mean_intensity": 56.02174377441406,
+        "std_intensity": 20.007624513741845,
+        "entropy": 6.235031689894767,
+        "edge_density": 0.253021240234375
+      },
+      "vegetation_analysis": {
+        "ndvi_mean": 0.01802523808263263,
+        "ndvi_std": 0.2916360130656323,
+        "vegetation_coverage": 0.3980522155761719,
+        "green_dominance": 0.529007417369282,
+        "anomaly_areas": 0.051788330078125
+      },
+      "spatial_patterns": {
+        "grid_regularity": 0.01,
+        "symmetry_score": 0.46891261082069546,
+        "pattern_strength": 0.3571403381213495
+      }
+    },
+    "ai_interpretation": "\nEXPERT ARCHAEOLOGICAL ASSESSMENT - Upper Xingu Expansion Zone\n\nSITE CLASSIFICATION: MIXED ARCHAEOLOGICAL FEATURES\nARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION\nCONFIDENCE LEVEL: LOW\n\nFEATURE ANALYSIS:\nThe satellite imagery reveals 78 distinct geometric features, including 0 circular patterns and 3 linear structures. This pattern distribution is consistent with mixed archaeological features typical of pre-Columbian Amazon settlements.\n\nCULTURAL CONTEXT:\nBased on the geographic location at -12.500, -52.800, this site falls within the broader Amazon archaeological region known for:\n- Geometric earthworks (similar to Acre geoglyphs)\n- Raised field agricultural systems\n- Complex settlement patterns from 500-1500 CE\n\nVEGETATION INDICATORS:\nVegetation analysis shows 5.2% anomalous areas, suggesting possible subsurface archaeological features. The NDVI patterns indicate 40% vegetation coverage with clear geometric disruptions.\n\nSPATIAL PATTERNS:\nGrid regularity score of 0.01 and symmetry score of 0.47 indicate planned construction rather than natural formation.\n\nRECOMMENDATIONS:\n1. Ground-penetrating radar survey to confirm subsurface features\n2. High-resolution drone imagery for detailed mapping\n3. Consultation with local indigenous communities\n4. Archaeological field survey if patterns confirmed\n5. Comparative analysis with known Amazon archaeological sites\n\nRESEARCH PRIORITY: LOW - This site warrants eventual archaeological investigation.\n",
+    "archaeological_score": 0.5378912610820696,
+    "confidence_level": "MEDIUM",
+    "recommendations": [
+      "Additional remote sensing analysis",
+      "Comparative study with known archaeological sites",
+      "Environmental impact assessment",
+      "Preliminary field reconnaissance"
+    ]
+  }
+]

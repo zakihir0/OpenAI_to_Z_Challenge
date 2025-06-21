@@ -1,0 +1,102 @@
+FIXED AI ARCHAEOLOGICAL ANALYSIS REPORT
+==================================================
+Analysis Date: 2025-06-21 05:28:45
+Sites Analyzed: 3
+Analysis Method: Enhanced CV + AI Integration
+
+ARCHAEOLOGICAL DISCOVERIES:
+
+1. Llanos de Mojos Border Region 🏛️
+   Coordinates: -15.200, -64.800
+   Archaeological Score: 0.66/1.0
+   Confidence Level: MEDIUM
+
+   🔍 DETECTED FEATURES:
+   - Total Geometric: 78
+   - Circular (earthworks): 0
+   - Linear (roads/canals): 7
+   - Regular patterns: 0
+
+   🤖 AI ASSESSMENT:
+   
+EXPERT ARCHAEOLOGICAL ASSESSMENT - Llanos de Mojos Border Region
+
+SITE CLASSIFICATION: LINEAR FEATURE SYSTEM
+ARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION
+CONFIDENCE LEVEL: LOW
+
+FEATURE...
+
+   📋 RECOMMENDATIONS:
+   • Additional remote sensing analysis
+   • Comparative study with known archaeological sites
+   • Environmental impact assessment
+
+   ========================================
+
+2. Acre Geoglyph Extension Area 🏛️
+   Coordinates: -10.500, -67.800
+   Archaeological Score: 0.48/1.0
+   Confidence Level: MEDIUM
+
+   🔍 DETECTED FEATURES:
+   - Total Geometric: 66
+   - Circular (earthworks): 0
+   - Linear (roads/canals): 1
+   - Regular patterns: 0
+
+   🤖 AI ASSESSMENT:
+   
+EXPERT ARCHAEOLOGICAL ASSESSMENT - Acre Geoglyph Extension Area
+
+SITE CLASSIFICATION: MIXED ARCHAEOLOGICAL FEATURES
+ARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION
+CONFIDENCE LEVEL: LOW
+
+...
+
+   📋 RECOMMENDATIONS:
+   • Additional remote sensing analysis
+   • Comparative study with known archaeological sites
+   • Environmental impact assessment
+
+   ========================================
+
+3. Upper Xingu Expansion Zone 🏛️
+   Coordinates: -12.500, -52.800
+   Archaeological Score: 0.51/1.0
+   Confidence Level: MEDIUM
+
+   🔍 DETECTED FEATURES:
+   - Total Geometric: 71
+   - Circular (earthworks): 0
+   - Linear (roads/canals): 2
+   - Regular patterns: 0
+
+   🤖 AI ASSESSMENT:
+   
+EXPERT ARCHAEOLOGICAL ASSESSMENT - Upper Xingu Expansion Zone
+
+SITE CLASSIFICATION: MIXED ARCHAEOLOGICAL FEATURES
+ARCHAEOLOGICAL SIGNIFICANCE: REQUIRES FURTHER INVESTIGATION
+CONFIDENCE LEVEL: LOW
+
+FE...
+
+   📋 RECOMMENDATIONS:
+   • Additional remote sensing analysis
+   • Comparative study with known archaeological sites
+   • Environmental impact assessment
+
+   ========================================
+
+📊 SUMMARY STATISTICS:
+- Average Archaeological Score: 0.55
+- High Confidence Sites: 0/3
+- Total Features Detected: 215
+
+✅ TECHNICAL SUCCESS:
+- AI analysis system fully operational
+- Computer vision analysis enhanced
+- Expert fallback system functional
+- Comprehensive scoring implemented
