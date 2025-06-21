@@ -1,0 +1,34 @@
+{
+  "export_info": {
+    "timestamp": "20250621_092537",
+    "export_date": "2025-06-21T09:25:38.015179",
+    "coordinate_system": "EPSG:4326",
+    "software": "LIDAR Archaeological Processor"
+  },
+  "analysis_summary": {
+    "total_structures": 0,
+    "archaeological_score": 0.6,
+    "processing_method": "unknown"
+  },
+  "exported_files": {
+    "shapefile_earthworks": "results/archaeological_earthworks_20250621_092537.shp",
+    "shapefile_circular_features": "results/archaeological_circular_features_20250621_092537.shp",
+    "shapefile_mounds": "results/archaeological_mounds_20250621_092537.shp",
+    "geojson_earthworks": "results/archaeological_earthworks_20250621_092537.geojson",
+    "geojson_circular_features": "results/archaeological_circular_features_20250621_092537.geojson",
+    "geojson_mounds": "results/archaeological_mounds_20250621_092537.geojson",
+    "kml_simple": "results/archaeological_structures_20250621_092537.kml",
+    "csv_structures": "results/archaeological_structures_20250621_092537.csv",
+    "csv_summary": "results/archaeological_summary_20250621_092537.csv"
+  },
+  "structure_types": {},
+  "data_quality": {
+    "confidence_assessment": {},
+    "method_reliability": {}
+  },
+  "recommendations": [
+    "SYNTHETIC DATA: Acquire real LIDAR data for accurate analysis",
+    "Install required LIDAR processing libraries (laspy, pdal, open3d)",
+    "This demonstration shows the analysis pipeline capabilities"
+  ]
+}

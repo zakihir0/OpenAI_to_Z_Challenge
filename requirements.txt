@@ -42,3 +42,18 @@ folium>=0.12.0
 # Optional satellite data APIs
 sentinelsat>=1.1.0
 earthengine-api>=0.1.0  # Requires additional setup
+
+# LIDAR and point cloud processing
+laspy>=2.0.0
+pdal>=3.0.0
+open3d>=0.17.0
+cloudcompare>=0.1.0  # Optional, for advanced processing
+
+# Digital elevation model processing
+elevation>=1.1.0
+pydem>=0.1.0
+richdem>=2.3.0
+
+# Advanced geospatial libraries for DTM/DSM
+whitebox>=2.0.0
+pysheds>=0.3.0

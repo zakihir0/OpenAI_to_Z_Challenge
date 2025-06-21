@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "archaeological_earthworks_20250621_092537",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 0, "type": "earthwork", "confidence": 0.0, "archaeological_type": "unknown", "cultural_context": "unknown", "area": 2827.4333882308138 }, "geometry": { "type": "Point", "coordinates": [ -63.20109375, -8.497929687499999 ] } }
+]
+}

@@ -1,0 +1,76 @@
+{
+  "pipeline_mode": "complete",
+  "processing": {
+    "resolution": 0.5,
+    "ground_classification_threshold": 2.0,
+    "vegetation_height_threshold": 2.0,
+    "structure_min_height": 0.3,
+    "structure_max_height": 50.0,
+    "noise_removal_radius": 1.0
+  },
+  "visualization": {
+    "hillshade_azimuth": 315,
+    "hillshade_altitude": 45,
+    "dpi": 300,
+    "figsize": [12, 10],
+    "cmap_terrain": "terrain",
+    "cmap_hillshade": "gray"
+  },
+  "structure_detection": {
+    "model_type": "hybrid",
+    "confidence_threshold": 0.5,
+    "min_feature_size": 25,
+    "max_feature_size": 10000
+  },
+  "ai_analysis": {
+    "api_key": null,
+    "base_url": "https://openrouter.ai/api/v1",
+    "model": "deepseek/deepseek-r1-0528:free",
+    "temperature": 0.3,
+    "max_tokens": 2000
+  },
+  "gis_export": {
+    "formats": ["shapefile", "geojson", "kml", "csv"],
+    "crs": "EPSG:4326",
+    "include_metadata": true
+  },
+  "cultural_context": {
+    "enable_rag": true,
+    "database_name": "amazon_archaeology",
+    "max_similar_sites": 5
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": null,
+    "enable_progress": true
+  },
+  "archaeological_regions": {
+    "amazon_basin": {
+      "bounds": [-70.0, -15.0, -50.0, 5.0],
+      "known_cultures": ["Casarabe", "Marajoara", "Tapajós", "Llanos de Mojos"],
+      "typical_features": ["circular_earthworks", "raised_fields", "forest_islands", "causeways"]
+    },
+    "western_amazon": {
+      "bounds": [-78.0, -5.0, -68.0, 2.0],
+      "known_cultures": ["Chachapoya", "Pre-Inca", "Amazonian"],
+      "typical_features": ["terraces", "settlements", "defensive_walls"]
+    },
+    "central_amazon": {
+      "bounds": [-65.0, -8.0, -55.0, 0.0],
+      "known_cultures": ["Marajoara", "Tapajós", "Santarém"],
+      "typical_features": ["mounds", "ceramics", "settlements"]
+    }
+  },
+  "priority_scoring": {
+    "structure_weight": 0.4,
+    "terrain_weight": 0.2,
+    "cultural_weight": 0.2,
+    "ai_confidence_weight": 0.2
+  },
+  "output": {
+    "generate_report": true,
+    "include_visualizations": true,
+    "export_gis": true,
+    "create_web_map": true
+  }
+}

@@ -7,35 +7,46 @@ This project implements a comprehensive AI-powered system for detecting archaeol
 
 ### Core Capabilities
 - **Multi-spectral Satellite Analysis**: Process satellite imagery with NDVI, EVI, and other vegetation indices
+- **LIDAR Point Cloud Processing**: Complete .las/.laz file processing with DTM/DSM extraction
+- **Advanced Terrain Analysis**: Hillshade, slope, aspect, curvature, and local relief calculation
+- **AI-Powered Structure Detection**: Hybrid CNN/traditional algorithms for archaeological feature identification
+- **Multimodal LLM Integration**: Image + text analysis using Deepseek and other vision models
 - **Geometric Pattern Detection**: Identify circular earthworks, linear features, and geometric anomalies
-- **OpenAI GPT-4 Integration**: Intelligent analysis and hypothesis generation
-- **RAG Knowledge System**: Archaeological knowledge base with vector similarity search
-- **Vegetation Anomaly Detection**: Identify areas of unusual vegetation patterns
-- **Machine Learning Classification**: Automated site scoring and prioritization
+- **Cultural Context RAG System**: Archaeological knowledge base with vector similarity search
+- **Comprehensive GIS Export**: Shapefile, GeoJSON, KML, GeoTIFF, and CSV format support
+- **3D Visualization**: Interactive terrain and structure visualization
 
 ### Archaeological Techniques
-- Remote sensing for earthwork detection
-- Vegetation analysis for buried structure identification
-- Soil mark analysis using spectral signatures
-- Template matching for common archaeological shapes
-- Multi-criteria decision analysis for site prioritization
+- **LIDAR Remote Sensing**: Point cloud analysis for ground surface extraction
+- **Hillshade Analysis**: Shadow-based terrain visualization for feature detection
+- **Structure Detection Algorithms**: Edge detection, Hough transforms, and morphological analysis
+- **Deep Learning Classification**: CNN and U-Net models for automated feature recognition
+- **Cultural Context Integration**: RAG-based comparison with known archaeological sites
+- **Multi-criteria Assessment**: Comprehensive scoring combining terrain, AI, and cultural factors
 
 ## Project Structure
 
 ```
 /home/myuser/OpenAI_to_Z_Challenge/
-├── run.py                            # Main execution script
-├── src/                              # Source code
-│   ├── main.py                       # Basic archaeological analysis
-│   ├── hybrid_cv_llm_solution.py     # Hybrid CV + LLM pipeline
-│   └── openai_archaeological_analysis.py  # Comprehensive analysis
-├── config/                           # Configuration files
-│   ├── .env                          # API keys and settings
-│   └── .env.example                  # Configuration template
-├── results/                          # Timestamped analysis outputs
-├── data/                            # Input data and cache
-├── requirements.txt                  # Python dependencies
-└── README.md                        # This file
+├── run.py                                    # Main execution script (satellite analysis)
+├── run_lidar_analysis.py                     # LIDAR analysis runner
+├── src/                                      # Source code
+│   ├── main.py                               # Basic archaeological analysis
+│   ├── archaeological_analyzer.py            # Core analysis engine
+│   ├── lidar_archaeological_processor.py     # LIDAR processing pipeline
+│   ├── ai_structure_detector.py              # AI-powered structure detection
+│   ├── multimodal_archaeological_pipeline.py # Complete multimodal pipeline
+│   ├── gis_archaeological_exporter.py        # GIS format export
+│   ├── visualization_engine.py               # Visualization components
+│   └── kaggle_integration.py                 # Kaggle dataset integration
+├── config/                                   # Configuration files
+│   ├── lidar_config.json                     # LIDAR pipeline configuration
+│   ├── .env                                  # API keys and settings
+│   └── .env.example                          # Configuration template
+├── results/                                  # Timestamped analysis outputs
+├── data/                                    # Input data and cache
+├── requirements.txt                          # Python dependencies
+└── README.md                               # This file
 ```
 
 ## Installation
@@ -74,6 +85,8 @@ pip install earthengine-api  # Requires additional Google Earth Engine setup
 ## Usage
 
 ### Quick Start
+
+#### Satellite Analysis (Original)
 ```bash
 # Basic analysis (fast, simple detection)
 python run.py basic
@@ -85,25 +98,39 @@ python run.py hybrid
 python run.py comprehensive
 ```
 
+#### LIDAR Analysis (New Multimodal Pipeline)
+```bash
+# Basic LIDAR processing
+python run_lidar_analysis.py --input data.las --output results/ --pipeline basic
+
+# Advanced analysis with structure detection
+python run_lidar_analysis.py --input data.las --output results/ --pipeline advanced \
+    --site-name "Amazon Site 1" --coordinates "-8.5,-63.2"
+
+# Complete multimodal analysis (recommended)
+python run_lidar_analysis.py --input data.las --output results/ --pipeline complete \
+    --site-name "Casarabe Complex" --region "Llanos de Mojos" \
+    --coordinates "-14.8,-64.9" --config config/lidar_config.json
+```
+
 ### Analysis Modes
 
-#### 1. Basic Analysis (`python run.py basic`)
-- Fast geometric pattern detection
-- Computer vision analysis
-- Basic OpenAI integration
-- Good for quick site screening
+#### Satellite Analysis Modes
+1. **Basic Analysis** (`python run.py basic`) - Fast geometric pattern detection
+2. **Hybrid CV + LLM** (`python run.py hybrid`) - Computer vision + AI analysis  
+3. **Comprehensive** (`python run.py comprehensive`) - Full feature extraction
 
-#### 2. Hybrid CV + LLM Analysis (`python run.py hybrid`)
-- Two-stage pipeline: CV filtering + LLM analysis
-- Mock satellite data generation
-- Detailed archaeological assessment
-- Recommended for most use cases
-
-#### 3. Comprehensive Analysis (`python run.py comprehensive`)
-- Full feature extraction and analysis
-- Advanced statistical methods
-- Regional batch processing
-- Research-grade output
+#### LIDAR Analysis Modes  
+1. **Basic LIDAR** (`--pipeline basic`) - DTM/DSM extraction and basic terrain analysis
+2. **Advanced** (`--pipeline advanced`) - Structure detection + GIS export
+3. **Complete Multimodal** (`--pipeline complete`) - Full AI pipeline with:
+   - LIDAR point cloud processing (.las/.laz files)
+   - Advanced terrain analysis (hillshade, slope, curvature)
+   - AI-powered structure detection (CNN + traditional algorithms)
+   - Multimodal LLM analysis (image + text with Deepseek)
+   - Cultural context integration (RAG system)
+   - Comprehensive GIS export (Shapefile, GeoJSON, KML, GeoTIFF)
+   - Archaeological assessment and recommendations
 
 ### Individual Module Usage
 ```python

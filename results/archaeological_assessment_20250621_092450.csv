@@ -1,0 +1,8 @@
+metric,value,category,description
+Overall Archaeological Score,0.9,Assessment,Comprehensive archaeological potential score (0-1)
+Investigation Priority,IMMEDIATE - High priority archaeological investigation required,Assessment,Recommended investigation priority level
+Circular Structures Count,180,Structure Detection,Number of detected circular structures
+Linear Structures Count,513,Structure Detection,Number of detected linear structures
+Rectangular Structures Count,1,Structure Detection,Number of detected rectangular structures
+Mounds Count,710,Structure Detection,Number of detected mounds
+Depressions Count,662,Structure Detection,Number of detected depressions
