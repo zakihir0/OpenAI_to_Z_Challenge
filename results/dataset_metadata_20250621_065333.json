@@ -1,0 +1,57 @@
+{
+  "title": "Amazon Archaeological Sites Analysis Dataset",
+  "description": "Computer vision and spatial analysis features for archaeological site detection in the Amazon basin",
+  "columns": [
+    "site_name",
+    "latitude",
+    "longitude",
+    "priority",
+    "total_features",
+    "circular_features",
+    "linear_features",
+    "regular_features",
+    "mean_intensity",
+    "std_intensity",
+    "entropy",
+    "edge_density",
+    "vegetation_coverage",
+    "ndvi_mean",
+    "anomaly_areas",
+    "grid_regularity",
+    "symmetry_score",
+    "pattern_strength",
+    "archaeological_score",
+    "confidence_level"
+  ],
+  "rows": 4,
+  "created": "2025-06-21T06:53:33.166760",
+  "features": {
+    "spatial": [
+      "latitude",
+      "longitude",
+      "grid_regularity",
+      "symmetry_score"
+    ],
+    "geometric": [
+      "total_features",
+      "circular_features",
+      "linear_features",
+      "regular_features"
+    ],
+    "texture": [
+      "mean_intensity",
+      "std_intensity",
+      "entropy",
+      "edge_density"
+    ],
+    "vegetation": [
+      "vegetation_coverage",
+      "ndvi_mean",
+      "anomaly_areas"
+    ],
+    "target": [
+      "archaeological_score",
+      "confidence_level"
+    ]
+  }
+}

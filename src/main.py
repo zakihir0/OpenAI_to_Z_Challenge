@@ -11,6 +11,7 @@ import logging
 
 from archaeological_analyzer import ArchaeologicalAnalyzer
 from visualization_engine import VisualizationEngine
+from kaggle_integration import integrate_kaggle_analysis
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -93,6 +94,15 @@ def main():
     # Generate reports
     output_files = system.generate_reports(results)
     
+    # Integrate Kaggle analysis
+    kaggle_credentials = {
+        "username": "zakihiro",
+        "key": "9eee705e4648cebe96a4ed3de9b920d5"
+    }
+    
+    logger.info("Integrating Kaggle analysis capabilities...")
+    kaggle_results = integrate_kaggle_analysis(results, kaggle_credentials)
+    
     # Summary
     print(f"\n{'='*60}")
     print("ARCHAEOLOGICAL ANALYSIS COMPLETE")
@@ -101,6 +111,14 @@ def main():
     print(f"Results file: {output_files['results_file']}")
     print(f"Text report: {output_files['text_report']}")
     print(f"Visualizations: {len(output_files['visualizations'])} files")
+    print(f"\n{'='*60}")
+    print("KAGGLE INTEGRATION COMPLETE")
+    print(f"{'='*60}")
+    print(f"Datasets found: {kaggle_results['datasets_found']}")
+    print(f"Competitions found: {kaggle_results['competitions_found']}")
+    print(f"Dataset created: {kaggle_results['dataset_created']}")
+    print(f"Submission file: {kaggle_results['submission_file']}")
+    print(f"Kaggle ready: {kaggle_results['kaggle_ready']}")
     print(f"{'='*60}")
 
 if __name__ == "__main__":
